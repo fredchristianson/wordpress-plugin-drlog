@@ -39,12 +39,14 @@ class LogWriter {
     }
 
     function drlog_message_writer($content) {
-        echo '<div class="drlog-messages">';
-        echo '<h1>DevRelief Log Messages</h1>';
-        foreach($this->messages as $message) {
-            echo '<div>'.$message.'</div>';
+        if (current_user_can('administrator')) {
+            echo '<div class="drlog-messages">';
+            echo '<h1>DevRelief Log Messages</h1>';
+            foreach($this->messages as $message) {
+                echo '<div>'.$message.'</div>';
+            }
+            echo '</div>';
         }
-        echo '</div>';
     }
 
     function addLogger($logger) {
